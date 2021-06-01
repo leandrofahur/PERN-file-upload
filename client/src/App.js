@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -31,11 +31,15 @@ function App() {
           className="ui image centered"
           // style={{ width: "100%", margin: "50%" }}
         >
-          <img
-            src={`${URL.createObjectURL(image)}`}
-            height="300px"
-            width="300px"
-          />
+          {image === null ? (
+            <img src="./images/noUser.png" height="300px" width="300px" />
+          ) : (
+            <img
+              src={`${URL.createObjectURL(image)}`}
+              height="300px"
+              width="300px"
+            />
+          )}
           {/* <i class="user circle icon"></i> */}
         </div>
         <div className="content">
